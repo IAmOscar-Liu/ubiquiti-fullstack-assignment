@@ -1,0 +1,651 @@
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.App .header {
+  padding: 1em 2em;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  background: rgb(234, 232, 232);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.App .header h1 {
+  color: #333;
+}
+
+.App .header nav {
+  flex-grow: 1;
+}
+
+.App .header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.2em;
+}
+
+.App .header nav ul li {
+  --link-color: rgb(162, 9, 9);
+}
+
+.App .header nav ul li a {
+  font-size: 1.5em;
+  text-decoration: none;
+  padding: 0.2em 0.5em;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+.App .header nav ul li a.active {
+  color: rgb(234, 232, 232);
+  background: var(--link-color);
+}
+
+.App .header .userInfo {
+  font-size: 1.1em;
+  color: darkblue;
+}
+
+.App .main {
+  padding: 2em 3em;
+}
+
+.App .main .food-lists,
+.App .main .task-lists {
+  margin-bottom: 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.App .main .food-lists h1,
+.App .main .task-lists h1 {
+  color: rgb(9, 110, 110);
+  text-align: center;
+}
+
+.App .main .food-lists .control-btns,
+.App .main .task-lists .control-btns {
+  display: flex;
+  margin-top: -1.5em;
+}
+
+.App .main .food-lists .control-btns button,
+.App .main .task-lists .control-btns button {
+  font-size: 1.4em;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  background: #4ecd89;
+  padding: 0.2em 0.8em;
+}
+
+.App .main .task-lists .control-btns button:not(:last-of-type) {
+  margin-right: 0.4em;
+  background: rgb(146, 164, 146);
+}
+
+.App .main .task-lists .control-btns button:not(:last-of-type).active {
+  pointer-events: none;
+  background: lime;
+}
+
+.App .main .food-lists .control-btns button:last-of-type,
+.App .main .task-lists .control-btns button:last-of-type {
+  margin-left: auto;
+  background: #4ecd89;
+}
+
+.App .main .food-lists .add-food,
+.App .main .task-lists .add-task {
+  border-radius: 20px;
+  border: 3px solid chocolate;
+  padding: 1.5em 2em;
+}
+
+.App .main .food-lists .add-food form,
+.App .main .task-lists .add-task form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.App .main .food-lists .add-food form p,
+.App .main .task-lists .add-task form p {
+  font-size: 1.2em;
+}
+
+.App .main .food-lists .add-food form p input,
+.App .main .task-lists .add-task form p input,
+.App .main .task-lists .add-task form p textarea {
+  margin-left: 1em;
+  width: Max(30vw, 250px);
+}
+
+.App .main .food-lists .add-food form input[type="submit"],
+.App .main .task-lists .add-task form input[type="submit"] {
+  align-self: flex-end;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.2em;
+  padding: 0.3em 0.8em;
+  background: rgb(200, 162, 73);
+}
+
+.App .main .food-lists .lists,
+.App .main .task-lists .lists {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-inline: auto;
+  width: clamp(400px, 80vw, 800px);
+}
+
+.App .main .food-lists .lists article,
+.App .main .task-lists .lists article {
+  border-radius: 2em;
+  border: 3px solid #555;
+  padding: 2em 2em;
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 15vw 3fr;
+}
+
+.App .main .food-lists .lists article .img-container {
+  height: 15vw;
+}
+
+.App .main .food-lists .lists article .img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.App .main .food-lists .lists article .info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+}
+
+.App .main .food-lists .lists article .info .description,
+.App .main .food-lists .lists article .info .date {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.App .main .food-lists .lists article .info .date {
+  flex-grow: 1;
+  color: #2d8888;
+}
+
+.App .main .food-lists .lists article .info .btns {
+  align-self: flex-end;
+}
+
+.App .main .food-lists .lists article .info .btns button {
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 0.3em 0.8em;
+  margin: 0 0.3em;
+  font-size: 1.2em;
+  background: greenyellow;
+}
+
+.App .main .food-lists .lists article .info .btns button:last-of-type {
+  background: #8f4242;
+}
+
+.App .main .food-detail,
+.App .main .task-detail {
+  display: flex;
+  margin-inline: auto;
+  width: clamp(400px, 80vw, 800px);
+  flex-direction: column;
+  gap: 1em;
+}
+
+.App .main .food-detail h1,
+.App .main .task-detail h1 {
+  text-align: center;
+}
+
+.App .main .food-detail .img-bx {
+  width: 100%;
+  border: 2px solid #333;
+  position: relative;
+  padding-bottom: 56.25%;
+}
+
+.App .main .food-detail .img-bx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.App .main .food-detail button,
+.App .main .task-detail button {
+  align-self: flex-start;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.5em;
+}
+
+.App .main .food-detail button span,
+.App .main .task-detail button span {
+  text-decoration: underline;
+}
+
+.App .main .food-detail button.submit-change,
+.App .main .task-detail button.submit-change {
+  text-decoration: none;
+  background: #4ecd89;
+  padding: 0.3em 0.6em;
+  border-radius: 10px;
+  font-size: 1.1em;
+  align-self: center;
+}
+
+.App .main .food-detail .details,
+.App .main .task-detail .details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  font-size: 1.2em;
+}
+
+.App .main .food-detail .details p,
+.App .main .task-detail .details p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.App .main .food-detail details p:first-of-type,
+.App .main .task-detail details p:first-of-type {
+  margin-bottom: 1.5em;
+}
+
+.App .main .food-detail .details p:first-of-type button,
+.App .main .task-detail .details p:first-of-type button {
+  font-size: 1em;
+  text-decoration: none;
+  background: #a0e9e9;
+  padding: 0.3em 0.6em;
+  border-radius: 5px;
+}
+
+.App .main .task-lists .lists article {
+  grid-template-columns: 2fr 1fr;
+}
+
+.App .main .task-lists .lists article .left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.App .main .task-lists .lists article .left h1 {
+  text-align: left;
+  color: rgb(162, 9, 9);
+  font-size: 1.8em;
+  margin-bottom: 0.2em;
+}
+
+.App .main .task-lists .lists article .left .price-and-deadline {
+  font-size: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App .main .task-lists .lists article .left .price-and-deadline .price,
+.App .main .task-lists .lists article .left .price-and-deadline .deadline {
+  font-size: 1.25em;
+  color: #555;
+}
+
+.App .main .task-lists .lists article .left .price-and-deadline .deadline {
+  transform: translateY(-3px);
+  color: rgb(188, 139, 15);
+  font-size: 1.1em;
+}
+
+.App .main .task-lists .lists article .left .create-and-subtasks {
+  display: flex;
+  justify-content: space-between;
+  color: #777;
+}
+
+.App .main .task-lists .lists article .left .create-and-subtasks .subtask-num {
+  transform: translateY(0px);
+}
+
+.App .main .task-lists .lists article .left .description {
+  margin-top: 0.2em;
+  font-size: 1.15em;
+  color: rgb(62, 54, 148);
+}
+
+.App .main .task-lists .lists article .right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.App .main .task-lists .lists article .right h1 {
+  align-self: flex-end;
+  color: #272004;
+}
+
+.App .main .task-lists .lists article .right h2 {
+  align-self: flex-end;
+  color: rgb(35, 111, 111);
+  font-size: 1.2em;
+}
+
+.App .main .task-lists .lists article .right .btns {
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+.App .main .task-lists .lists article .right .btns button {
+  outline: none;
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.2em 0.6em;
+  font-size: 1.25em;
+  margin-left: 0.4em;
+  background: greenyellow;
+}
+
+.App .main .task-lists .lists article .right .btns button:last-of-type {
+  background: #8f4242;
+}
+
+.App .main .task-lists .add-task form p.textarea {
+  display: flex;
+}
+
+.App .main .task-lists .add-task form p.add-subtask {
+  align-self: flex-start;
+  border-radius: 10px;
+  border: 2px solid #272004;
+  padding: 0.1em 0.5em;
+  background: pink;
+  cursor: pointer;
+}
+
+.App .main .task-lists .add-task form .new-subtask-lists {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.App .main .task-lists .add-task form .new-subtask-lists .new-subtask {
+  padding: 0.8em 1.5em;
+  border-radius: 1em;
+  border: 2px solid #555;
+}
+
+.App
+  .main
+  .task-lists
+  .add-task
+  form
+  .new-subtask-lists
+  .new-subtask
+  .new-subtask-title {
+  font-weight: bold;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.App
+  .main
+  .task-lists
+  .add-task
+  form
+  .new-subtask-lists
+  .new-subtask
+  .new-subtask-title
+  span {
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid #555;
+  padding: 0.1em 0.3em;
+  background: #8f4242;
+}
+
+.App .main .task-detail h1 {
+  position: relative;
+}
+
+.App .main .task-detail h1 span {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7em;
+  color: #8f4242;
+}
+
+.App .main .task-detail .details p.description {
+  display: flex;
+  align-items: flex-start;
+}
+
+.App .main .task-detail .details p.subtasks span {
+  border-radius: 5px;
+  border: 2px solid #555;
+  background: rgb(209, 114, 130);
+  padding: 0 0.5em;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.App .main .task-detail .details p.submit-new-subtask button {
+  margin-left: auto;
+  font-size: 1em;
+  border: 2px solid #555;
+  padding: 0.1em 0.5em;
+  border-radius: 0.5em;
+  background: #4ecd89;
+  margin-top: -1em;
+}
+
+.App .main .task-detail .details .add-subtask-on-task {
+  border: 2px solid #555;
+  padding: 0.5em 1.2em;
+  border-radius: 0.5em;
+  margin-left: 1em;
+}
+
+.App .main .task-detail .details .subtask-lists {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.App .main .task-detail .details .subtask-lists .subtask-detail {
+  margin-left: 1em;
+  border-radius: 1em;
+  border: 2px solid #777;
+  padding: 0.5em 0.8em 0.5em 1.5em;
+}
+
+.App .main .task-detail .details .subtask-lists .subtask-detail h4 {
+  display: flex;
+}
+
+.App .main .task-detail .details .subtask-lists .subtask-detail h4 span {
+  font-size: 1.1em;
+  margin-right: auto;
+}
+
+.App .main .task-detail .details .subtask-lists .subtask-detail h4 button {
+  font-size: 0.9em;
+  margin-left: 0.5em;
+  border: 2px solid #555;
+  padding: 0 0.2em;
+  border-radius: 0.5em;
+  background: pink;
+  white-space: nowrap;
+}
+
+.App
+  .main
+  .task-detail
+  .details
+  .subtask-lists
+  .subtask-detail
+  h4
+  button:nth-of-type(2) {
+  background-color: #4ecd89;
+}
+
+.App
+  .main
+  .task-detail
+  .details
+  .subtask-lists
+  .subtask-detail
+  h4
+  button:last-of-type {
+  background: red;
+}
+
+.App
+  .main
+  .task-detail
+  .details
+  .subtask-lists
+  .subtask-detail
+  .update-subtask-btn {
+  margin-left: auto;
+  font-size: 0.9em;
+  border: 1px solid #555;
+  border-radius: 0.3em;
+  padding: 0 0.4em;
+  background: rgb(116, 213, 213);
+  margin-top: 0.3em;
+}
+
+.App .main .task-detail .details .subtask-lists .subtask-detail .add-subtask {
+  border: 2px solid #777;
+  padding: 0.3em 0.8em;
+  margin-block: 0.3em 0.2em;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.App
+  .main
+  .task-detail
+  .details
+  .subtask-lists
+  .subtask-detail
+  .add-subtask
+  button {
+  font-size: 0.9em;
+  border-radius: 0.5em;
+  border: 1px solid #777;
+  padding: 0 0.5em;
+  background: #a0e9e9;
+  margin-left: auto;
+  margin-top: -1em;
+}
+
+.App .main .task-detail .details .subtask-detail .subtask-detail-children {
+  margin-top: 0.3em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.App .main .login {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.App .main .login h1 {
+  text-align: center;
+}
+
+.App .main .login .login-btns {
+  align-self: center;
+}
+
+.App .main .login .login-btns button {
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2em;
+  padding: 0.3em 0.5em;
+  margin: 0 0.5em;
+  background: #4ecd89;
+}
+
+.App .main .login .login-btns button:last-of-type {
+  background: #a0e9e9;
+}
+
+.App .main .login .form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
+
+.App .main .login .form-wrapper form p {
+  font-size: 1.2em;
+}
+
+.App .main .login .form-wrapper form p label {
+  margin-right: 1.2em;
+}
+
+.App .main .login .form-wrapper form p input {
+  padding: 0.2em 0.5em;
+  width: max(20vw, 200px);
+}
+
+.App .main .login .form-wrapper form input[type="submit"] {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 0.5em 0.6em;
+  border-radius: 20px;
+  background: chocolate;
+}
+
+.App .main .logout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.App .main .logout button {
+  border: none;
+  outline: none;
+  font-size: 1.5em;
+  border-radius: 15px;
+  padding: 0.5em 0.7em;
+  background: #a0e9e9;
+}
